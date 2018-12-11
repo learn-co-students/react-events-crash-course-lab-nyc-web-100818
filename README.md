@@ -6,7 +6,6 @@
 1. Practice affixing and handling Synthetic Events in React
 2. Have fun with an absolute [legend][legend]
 
-
 ## Introduction
 
 Let's jump right into a React application and add event capturing + handling
