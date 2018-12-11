@@ -13,18 +13,18 @@ import ChromeBoisDomain from '../src/ChromeBoisDomain'
 
 
 describe('<ChromeBoisDomain />', () => {
-  
+
   const drawChromeBoiAtCoords = sinon.stub(canvasHelpers, "drawChromeBoiAtCoords")
   const toggleCycling = sinon.stub(canvasHelpers, "toggleCycling")
   const resize = sinon.stub(canvasHelpers, "resize")
-  
+
   let comp, instance;
-  
+
   beforeEach(() => {
     comp = shallow(<ChromeBoisDomain />)
     instance = comp.instance()
   })
-  
+
   it('invokes the `drawChromeBoiAtCoords` method within `handleMouseMove`, passing the captured x and y values of the mouse from the event', () => {
     const event = {
       clientX: 33,
@@ -35,7 +35,7 @@ describe('<ChromeBoisDomain />', () => {
     expect(x).to.equal(33)
     expect(y).to.equal(44)
   })
-  
+
   it('has an event listener for clicks on the <canvas> element that triggers `toggleCycling`', () => {
     comp.find('canvas').simulate('click')
     expect(toggleCycling.called).to.equal(true)
@@ -50,7 +50,7 @@ describe('<ChromeBoisDomain />', () => {
     comp.find('canvas').simulate('keyDown', event)
     comp.find('canvas').simulate('keyPress', event)
     comp.find('canvas').simulate('keyUp', event)
-    
+
     expect(resize.called).to.equal(true)
   })
 
@@ -63,7 +63,7 @@ describe('<ChromeBoisDomain />', () => {
     comp.find('canvas').simulate('keyDown', event)
     comp.find('canvas').simulate('keyPress', event)
     comp.find('canvas').simulate('keyUp', event)
-    
+
     expect(resize.getCall(0).args[0]).to.equal('+')
   })
 
@@ -77,7 +77,7 @@ describe('<ChromeBoisDomain />', () => {
     comp.find('canvas').simulate('keyDown', event)
     comp.find('canvas').simulate('keyPress', event)
     comp.find('canvas').simulate('keyUp', event)
-    
+
     expect(resize.getCall(0).args[0]).to.equal('-')
   })
 })
